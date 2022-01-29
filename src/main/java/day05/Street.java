@@ -38,6 +38,10 @@ public class Street {
         }
     }
 
+    public long getNumberOfEvenHousesPerStreet(String street){
+        return houses.get(street).stream().mapToInt(h->h).filter(i->i % 2 ==0).count();
+    }
+
     private void maxFinder(String street, int side){
         int maxValue = houses.get(street).stream()
                 .mapToInt(i -> i)
@@ -51,6 +55,8 @@ public class Street {
         Street s = new Street();
         s.mapper(Paths.get("src/test/resources/streets.txt"));
         System.out.println(s.houses);
+
+        System.out.println(s.getNumberOfEvenHousesPerStreet("Petofi"));
 
     }
 }
